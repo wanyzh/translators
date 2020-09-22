@@ -91,7 +91,9 @@ function scrapeAndParse(doc, url) {
 		newItem.extra = "";
 		
 		// 标题 title.
-		pattern = /bookname="([\s\S]*?)"/;
+		//pattern = /bookname= "([\s\S]*?)"/; //need a space after "bookname= "
+		//or
+		pattern=/<dt>([\s\S]*?)<\/dt>/; //recommend
 		if (pattern.test(page)) {
 			var title = pattern.exec(page)[1];
 			newItem.title = Zotero.Utilities.trim(title);
